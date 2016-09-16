@@ -191,16 +191,26 @@ var questions = [
 ];
 
 // var ingredients = [
-// 	new PirateIngredients
-
+// 	new PirateIngredients('Glug of rum', 'strong');
+// 	new PirateIngredients('Slug of whiskey', 'strong');
+// 	new PirateIngredients('Splash of gin', 'strong');
+// 	new PirateIngredients('Olive on a stick', 'salty');
+// 	new PirateIngredients('Salt-dusted rim', 'salty');
+// 	new PirateIngredients('Rasher of bacon', 'salty');
+// 	new PirateIngredients('Shake of bitters', 'bitter');
+// 	new PirateIngredients('Splash of tonic', 'bitter');
+// 	new PirateIngredients('Twist of lemon peel', 'bitter');
+// 	new PirateIngredients('Sugar cube', 'sweet');
+// 	new PirateIngredients('Spoonful of honey', 'sweet');
+// 	new PirateIngredients('Splash of cola', 'sweet');
+// 	new PirateIngredients('Slice of orange', 'fruity');
+// 	new PirateIngredients('Splash of cassis', 'fruity');
+// 	new PirateIngredients('Cherry on top', 'fruity');
 
 // ];
 
 
-// var ingredients = [
-// 	new PirateIngredients('')
 
-// ];
 
 
 // If the user responds 'yes' to a flavor, then choose a random ingredient from that flavor's array
@@ -260,11 +270,8 @@ $(document).ready(function() {
 
     $('.enter-button').click(pirate.checkQuestions.bind(pirate));
 
-   
-
     $('#btn-yes').click(pirate.checkUserAnswerYes.bind(pirate));
     $('#btn-no').click(pirate.checkUserAnswerNo.bind(pirate));
-
-    // $('.response').submit(pirate.submit.bind(pirate));
+ 
 
 });
