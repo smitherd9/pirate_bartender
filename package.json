@@ -1,0 +1,23 @@
+{
+  "name": "pirate_bartender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smitherd9/pirate_bartender.git"
+  },
+  "author": "Daniel Smither",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smitherd9/pirate_bartender/issues"
+  },
+  "homepage": "https://github.com/smitherd9/pirate_bartender#readme",
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "jquery": "^3.1.0"
+  }
+}
