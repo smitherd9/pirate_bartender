@@ -10,6 +10,8 @@ var filename = [packageData.name, packageData.version, 'js'];
 
 var plugins = [];
 
+// var sounds = require('./sounds');   // make a whole module of sounds?
+
 if (minify) {
     filename.splice(filename.length - 1, 0, 'min');
     plugins.push(new webpack.optimize.UglifyJsPlugin());
@@ -23,18 +25,26 @@ module.exports = {
     },
     devtool: 'source-map',
     module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /(node_modules)/,
-          loader: 'babel',
-          query: {
-            presets: ['es2015']
-          }
-        }
-      ]
+        loaders: [{
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            loader: 'babel',
+            query: {
+                presets: ['es2015']
+            }
+        }]
     },
     plugins: plugins,
-    
+
+    resolve: {
+        alias: {
+            'jquery': require.resolve('jquery'),
+            'animateCss': require.resolve('animate.css'),
+            'normalizeCss': require.resolve('normalize.css'),            
+            // bind to modules;
+            modules: path.join(__dirname, "node_modules"),
+        }
+    }
+
 }
-}
+

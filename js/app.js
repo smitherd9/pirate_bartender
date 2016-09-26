@@ -1,3 +1,8 @@
+var $ = require('jquery');
+var animateCss = require('animate.css');
+
+
+
 // jQuery extension to handle css animations
 
 $.fn.extend({
@@ -40,7 +45,7 @@ class PirateQuestions {
             $('.pirate-questions').append('<h2>' + this.questions + '</h2>');
         }
 
-};
+}
 
 
 // var PirateIngredients = function(ingredient, amount, flavor) {
@@ -81,7 +86,7 @@ class PirateBartender {
     }
 
     checkQuestions() {
-        if (this.questions.length == 0) {
+        if (this.questions.length === 0) {
             this.makeDrink();
 
         } else {
@@ -173,7 +178,7 @@ class PirateBartender {
                 }, 4000);
             }
 
-        }
+        };
         jokeLoop(0);
     }
 
