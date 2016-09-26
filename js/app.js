@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var animateCss = require('animate.css');
+
 
 
 
@@ -37,7 +37,7 @@ var plank = new Audio('sounds/walktheplank.wav');
 class PirateQuestions {
     constructor(questions, flavor) {
         this.questions = questions;
-        this. flavor = flavor;
+        this.flavor = flavor;
     }
         display() {
             $('.pirate-questions').text('');
@@ -214,7 +214,7 @@ class PiratePantry {
         this.salty = [];
     }
 
-    add() {
+    add(ingredient) {
         this[ingredient.flavor].push(ingredient);
     }
 

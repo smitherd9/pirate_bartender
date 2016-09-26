@@ -51,7 +51,6 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var $ = __webpack_require__(1);
-	var animateCss = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"animate.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	// jQuery extension to handle css animations
 	
@@ -257,7 +256,7 @@
 	
 	    _createClass(PiratePantry, [{
 	        key: 'add',
-	        value: function add() {
+	        value: function add(ingredient) {
 	            this[ingredient.flavor].push(ingredient);
 	        }
 	    }]);

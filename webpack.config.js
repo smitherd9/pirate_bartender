@@ -10,8 +10,6 @@ var filename = [packageData.name, packageData.version, 'js'];
 
 var plugins = [];
 
-// var sounds = require('./sounds');   // make a whole module of sounds?
-
 if (minify) {
     filename.splice(filename.length - 1, 0, 'min');
     plugins.push(new webpack.optimize.UglifyJsPlugin());
