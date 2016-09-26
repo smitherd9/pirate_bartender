@@ -39,9 +39,9 @@
     color: #fff;
 }
 
-.enter-button {    
-    box-shadow: 3px 4px 0px 0px #1564ad;    
-    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);    
+.enter-button {
+    box-shadow: 3px 4px 0px 0px #1564ad;
+    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
     background-color: #79bbff;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -58,21 +58,21 @@
     text-shadow: 0px 1px 0px #528ecc;
 }
 
-.enter-button:hover {    
-    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);    
+.enter-button:hover {
+    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
     background-color: #378de5;
 }
 
-.enter-button:active,
-{
+.enter-button:active, {
+
     position: relative;
     top: 1px;
 }
 
 .answer-button {
-    box-shadow: 3px 4px 0px 0px #1564ad;    
-    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);    
-    background-color: #79bbff;    
+    box-shadow: 3px 4px 0px 0px #1564ad;
+    background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+    background-color: #79bbff;
     border-radius: 5px;
     border: 1px solid #337bc4;
     display: inline-block;
@@ -86,8 +86,8 @@
     text-shadow: 0px 1px 0px #528ecc;
 }
 
-.answer-button:hover {    
-    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);    
+.answer-button:hover {
+    background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
     background-color: #378de5;
 }
 

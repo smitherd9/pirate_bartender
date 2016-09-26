@@ -23,45 +23,213 @@ var plank = new Audio('sounds/walktheplank.wav');
 
 // Constructor Functions // 
 
-var PirateQuestions = function(questions, flavor) {
-    this.questions = questions;
-    this.flavor = flavor;
+// var PirateQuestions = function(questions, flavor) {
+//     this.questions = questions;
+//     this.flavor = flavor;
+
+// };
+
+class PirateQuestions {
+    constructor(questions, flavor) {
+        this.questions = questions;
+        this. flavor = flavor;
+    }
+        display() {
+            $('.pirate-questions').text('');
+            $('.pirate-questions').animateCss('zoomIn');
+            $('.pirate-questions').append('<h2>' + this.questions + '</h2>');
+        }
 
 };
 
 
-var PirateIngredients = function(ingredient, amount, flavor) {
-    this.ingredient = ingredient;
-    this.amount = amount;
-    this.flavor = flavor;
-};
+// var PirateIngredients = function(ingredient, amount, flavor) {
+//     this.ingredient = ingredient;
+//     this.amount = amount;
+//     this.flavor = flavor;
+// };
 
-
-var PirateBartender = function(questions) {
-    this.questions = questions;
-    this.userPreference = [];
-}
-
-var PiratePantry = function() {
-    this.strong = [];
-    this.sweet = [];
-    this.bitter = [];
-    this.fruity = [];
-    this.salty = [];
-}
-
-PiratePantry.prototype.add = function(ingredient) {
-    this[ingredient.flavor].push(ingredient);
+class PirateIngredients {
+    constructor(ingredient, amount, flavor) {
+        this.ingredient = ingredient;
+        this.amount = amount;
+        this.flavor = flavor;
+    }
 }
 
 
+// var PirateBartender = function(questions) {
+//     this.questions = questions;
+//     this.userPreference = [];
+// }
 
-PirateQuestions.prototype.display = function() {
-    $('.pirate-questions').text('');
-    $('.pirate-questions').animateCss('zoomIn');
-    $('.pirate-questions').append('<h2>' + this.questions + '</h2>');
 
-};
+class PirateBartender {
+    constructor(questions) {
+        this.questions = questions;
+        this.userPreference = [];
+    }
+
+    checkUserAnswerYes() {
+        if (this.questions.length < 0) {
+
+        } else {
+            this.userPreference.push(this.currentQuestion.flavor);
+            console.log(this.userPreference + " pushed");
+            this.checkQuestions();
+        }
+    }
+
+    checkQuestions() {
+        if (this.questions.length == 0) {
+            this.makeDrink();
+
+        } else {
+            var randomNum = Math.floor(Math.random() * questions.length);
+            this.currentQuestion = this.questions[randomNum];
+            this.questions.splice(randomNum, 1);
+            this.currentQuestion.display();
+        }
+    }
+
+    makeDrink() {
+
+        $('.pirate-questions').text('');
+        var randomIngArray = [];
+        for (var i = 0; i < this.userPreference.length; i++) {
+            var flavor = this.userPreference[i];
+            var flavorIngredients = pantry[flavor];
+            var randomNum = Math.floor(Math.random() * flavorIngredients.length);
+            var randomIngredient = flavorIngredients[randomNum];
+            randomIngArray.push(randomIngredient.ingredient);
+            console.log(randomIngArray);
+
+
+        }
+        for (var i = 0; i < randomIngArray.length; i++) {
+            // if (randomIngArray.length > 0) {
+            $('.pirate-questions').html('<h2>' + "Here's yer " + randomIngArray + '</h2>');
+            // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[i++] + '</h2>');
+            // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[2] + '</h2>');
+            // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[3] + '</h2>');
+            // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[4] + '</h2>');
+            $('.pirate-questions').animateCss('zoomIn');
+        }
+        console.log(randomIngredient.ingredient);
+        yar.play();
+        $('#btn-yes').off('click');
+        $('#btn-no').off('click');
+        this.askJoke();
+        console.log(this.userPreference);
+
+    }
+
+
+    askJoke() {
+        setTimeout(function() {
+            var askJoke = "Now that ye have yer drink, will ye indulge me passions and listen to a joke?";
+            $('.pirate-questions').text('');
+            $('.pirate-questions').append('<h2>' + askJoke + '</h2>');
+            $('.pirate-questions').animateCss('zoomIn');
+        }, 2500);
+        console.log(this);
+        $('#btn-yes').click(this.sayJoke);
+        $('#btn-no').click(this.angry);
+
+
+    }
+
+
+    sayJoke() {
+        $('#btn-yes').fadeOut(500);
+        $('#btn-no').fadeOut(500);
+
+        var tellJoke = ['So... a pirate walks into a bar,',
+            'and he has a huge steering wheel from a ship, stuck in the front of his pants.',
+            "He sits down at the bar (don't ask how) and demands a drink.",
+            "The befuddled bartender quickly complies, and hands him the drink.",
+            "Finally, unable to contain himself any longer, the bartender says",
+            "Um, I dont mean to be rude, but do you mind me asking about that... huge thing...doesn't it bother you?"
+
+        ];
+
+        $('.pirate-questions').text('');
+
+        var jokeLoop = function(i) {
+            if (tellJoke.length == i) {
+
+                $('#btn-answer').fadeIn(500);
+                $('#btn-answer').click(function() {
+                    drivesMe.play();
+                });
+
+            } else {
+                var joke = tellJoke[i];
+
+                $('.pirate-questions').html('<h2>' + joke + '</h2>');
+                $('.pirate-questions').animateCss('zoomIn');
+                setTimeout(function() {
+                    jokeLoop(i + 1);
+                }, 4000);
+            }
+
+        }
+        jokeLoop(0);
+    }
+
+    angry() {
+        lillylivered.play();
+        setTimeout(function() {
+            plank.play();
+        }, 2500);
+    }
+
+}
+
+
+
+
+
+
+
+// var PiratePantry = function() {
+//     this.strong = [];
+//     this.sweet = [];
+//     this.bitter = [];
+//     this.fruity = [];
+//     this.salty = [];
+// }
+
+class PiratePantry {
+    constructor() {
+        this.strong = [];
+        this.sweet = [];
+        this.bitter = [];
+        this.fruity = [];
+        this.salty = [];
+    }
+
+    add() {
+        this[ingredient.flavor].push(ingredient);
+    }
+
+}
+
+
+
+
+// PiratePantry.prototype.add = function(ingredient) {
+//     this[ingredient.flavor].push(ingredient);
+// }
+
+
+
+// PirateQuestions.prototype.display = function() {
+//     $('.pirate-questions').text('');
+//     $('.pirate-questions').animateCss('zoomIn');
+//     $('.pirate-questions').append('<h2>' + this.questions + '</h2>');
+
+// };
 
 
 // store random number and use same random number in splice()
@@ -69,130 +237,132 @@ PirateQuestions.prototype.display = function() {
 
 
 
-PirateBartender.prototype.checkUserAnswerYes = function() {
-    if (this.questions.length < 0) {
+// PirateBartender.prototype.checkUserAnswerYes = function() {
+//     if (this.questions.length < 0) {
 
-    } else {
-        this.userPreference.push(this.currentQuestion.flavor);
-        console.log(this.userPreference + " pushed");
-        this.checkQuestions();
-    }
+//     } else {
+//         this.userPreference.push(this.currentQuestion.flavor);
+//         console.log(this.userPreference + " pushed");
+//         this.checkQuestions();
+//     }
 
-};
-
-
-PirateBartender.prototype.checkQuestions = function() {
-    if (this.questions.length == 0) {
-        this.makeDrink();
-
-    } else {
-        var randomNum = Math.floor(Math.random() * questions.length);
-        this.currentQuestion = this.questions[randomNum];
-        this.questions.splice(randomNum, 1);
-        this.currentQuestion.display();
-    }
-};
+// };
 
 
-PirateBartender.prototype.makeDrink = function() {
-    $('.pirate-questions').text('');
-    var randomIngArray = [];
-    for (var i = 0; i < this.userPreference.length; i++) {
-        var flavor = this.userPreference[i];
-        var flavorIngredients = pantry[flavor];
-        var randomNum = Math.floor(Math.random() * flavorIngredients.length);
-        var randomIngredient = flavorIngredients[randomNum];
-        randomIngArray.push(randomIngredient.ingredient);
-        console.log(randomIngArray);
+// PirateBartender.prototype.checkQuestions = function() {
+//     if (this.questions.length == 0) {
+//         this.makeDrink();
+
+//     } else {
+//         var randomNum = Math.floor(Math.random() * questions.length);
+//         this.currentQuestion = this.questions[randomNum];
+//         this.questions.splice(randomNum, 1);
+//         this.currentQuestion.display();
+//     }
+// };
 
 
-    }
-    for (var i = 0; i < randomIngArray.length; i++) {
-        // if (randomIngArray.length > 0) {
-        $('.pirate-questions').html('<h2>' + "Here's yer " + randomIngArray + '</h2>');
-        // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[i++] + '</h2>');
-        // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[2] + '</h2>');
-        // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[3] + '</h2>');
-        // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[4] + '</h2>');
-        $('.pirate-questions').animateCss('zoomIn');
-    }
-    console.log(randomIngredient.ingredient);
-    yar.play();
-    $('#btn-yes').off('click');
-    $('#btn-no').off('click');
-    this.askJoke();
-    console.log(this.userPreference);
-
-}
+// PirateBartender.prototype.makeDrink = function() {
+//     $('.pirate-questions').text('');
+//     var randomIngArray = [];
+//     for (var i = 0; i < this.userPreference.length; i++) {
+//         var flavor = this.userPreference[i];
+//         var flavorIngredients = pantry[flavor];
+//         var randomNum = Math.floor(Math.random() * flavorIngredients.length);
+//         var randomIngredient = flavorIngredients[randomNum];
+//         randomIngArray.push(randomIngredient.ingredient);
+//         console.log(randomIngArray);
 
 
-PirateBartender.prototype.askJoke = function() {
-    setTimeout(function() {
-        var askJoke = "Now that ye have yer drink, will ye indulge me passions and listen to a joke?";
-        $('.pirate-questions').text('');
-        $('.pirate-questions').append('<h2>' + askJoke + '</h2>');
-        $('.pirate-questions').animateCss('zoomIn');
-    }, 2500);
-    console.log(this);
-    $('#btn-yes').click(this.sayJoke);
-    $('#btn-no').click(this.angry);
+//     }
+//     for (var i = 0; i < randomIngArray.length; i++) {
+//         // if (randomIngArray.length > 0) {
+//         $('.pirate-questions').html('<h2>' + "Here's yer " + randomIngArray + '</h2>');
+//         // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[i++] + '</h2>');
+//         // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[2] + '</h2>');
+//         // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[3] + '</h2>');
+//         // $('.pirate-questions').append('<h2>' + ' with a ' + randomIngArray[4] + '</h2>');
+//         $('.pirate-questions').animateCss('zoomIn');
+//     }
+//     console.log(randomIngredient.ingredient);
+//     yar.play();
+//     $('#btn-yes').off('click');
+//     $('#btn-no').off('click');
+//     this.askJoke();
+//     console.log(this.userPreference);
+
+// }
 
 
-}
+// PirateBartender.prototype.askJoke = function() {
+//     setTimeout(function() {
+//         var askJoke = "Now that ye have yer drink, will ye indulge me passions and listen to a joke?";
+//         $('.pirate-questions').text('');
+//         $('.pirate-questions').append('<h2>' + askJoke + '</h2>');
+//         $('.pirate-questions').animateCss('zoomIn');
+//     }, 2500);
+//     console.log(this);
+//     $('#btn-yes').click(this.sayJoke);
+//     $('#btn-no').click(this.angry);
 
 
-PirateBartender.prototype.sayJoke = function() {
+// }
+
+
+// PirateBartender.prototype.sayJoke = function() {
     //create an array with the 6 strings in it 
     // write loop to go through array and each time do set timeout at 4seconds 
     //  after set timeout call back function to look through array again
-    $('#btn-yes').fadeOut(500);
-    $('#btn-no').fadeOut(500);
+//     $('#btn-yes').fadeOut(500);
+//     $('#btn-no').fadeOut(500);
 
-    var tellJoke = ['So... a pirate walks into a bar,',
-        'and he has a huge steering wheel from a ship, stuck in the front of his pants.',
-        "He sits down at the bar (don't ask how) and demands a drink.",
-        "The befuddled bartender quickly complies, and hands him the drink.",
-        "Finally, unable to contain himself any longer, the bartender says",
-        "Um, I dont mean to be rude, but do you mind me asking about that... huge thing...doesn't it bother you?"
+//     var tellJoke = ['So... a pirate walks into a bar,',
+//         'and he has a huge steering wheel from a ship, stuck in the front of his pants.',
+//         "He sits down at the bar (don't ask how) and demands a drink.",
+//         "The befuddled bartender quickly complies, and hands him the drink.",
+//         "Finally, unable to contain himself any longer, the bartender says",
+//         "Um, I dont mean to be rude, but do you mind me asking about that... huge thing...doesn't it bother you?"
 
-    ];
+//     ];
 
-    $('.pirate-questions').text('');
+//     $('.pirate-questions').text('');
 
-    var jokeLoop = function(i) {
+//     var jokeLoop = function(i) {    
 
-        if (tellJoke.length == i) {
+//     }
 
-            $('#btn-answer').fadeIn(500);
-            $('#btn-answer').click(function() {
-                drivesMe.play();
-            });
+//     if (tellJoke.length == i) {
 
-        } else {
-            var joke = tellJoke[i];
+//         $('#btn-answer').fadeIn(500);
+//         $('#btn-answer').click(function() {
+//             drivesMe.play();
+//         });
 
-            $('.pirate-questions').html('<h2>' + joke + '</h2>');
-            $('.pirate-questions').animateCss('zoomIn');
-            setTimeout(function() {
-                jokeLoop(i + 1);
-            }, 4000);
-        }
+//     } else {
+//         var joke = tellJoke[i];
 
-    }
-    jokeLoop(0);
-}
+//         $('.pirate-questions').html('<h2>' + joke + '</h2>');
+//         $('.pirate-questions').animateCss('zoomIn');
+//         setTimeout(function() {
+//             jokeLoop(i + 1);
+//         }, 4000);
+//     }
 
-
-
-
+// }
+// jokeLoop(0);
+// }
 
 
-PirateBartender.prototype.angry = function() {
-    lillylivered.play();
-    setTimeout(function() {
-        plank.play();
-    }, 2500);
-};
+
+
+
+
+// PirateBartender.prototype.angry = function() {
+//     lillylivered.play();
+//     setTimeout(function() {
+//         plank.play();
+//     }, 2500);
+// };
 
 
 
