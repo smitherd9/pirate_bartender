@@ -187,6 +187,13 @@ class PiratePantry {
 }
 
 
+
+
+
+
+
+
+
 //  Questions to be asked to the user // 
 
 
@@ -200,6 +207,11 @@ var questions = [
 ];
 
 
+var pirate = new PirateBartender(questions);
+
+
+
+var pantry = new PiratePantry();
 // Ingredients and Flavors  // 
 
 
@@ -220,11 +232,6 @@ pantry.add(new PirateIngredients('Splash of cassis', 5, 'fruity'));
 pantry.add(new PirateIngredients('Cherry on top', 10, 'fruity'));
 
 
-
-// Object instances // 
-
-var pantry = new PiratePantry();
-var pirate = new PirateBartender(questions);
 
 
 $(document).ready(function() {

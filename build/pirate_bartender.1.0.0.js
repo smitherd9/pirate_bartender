@@ -240,6 +240,9 @@
 	
 	var questions = [new PirateQuestions('Do ye like yer drinks strong?', 'strong'), new PirateQuestions('Do ye like it with a salty tang?', 'salty'), new PirateQuestions('Are ye a lubber who likes it bitter?', 'bitter'), new PirateQuestions('Would ye like a bit of sweetness with yer poison?', 'sweet'), new PirateQuestions('Are ye one for a fruity finish?', 'fruity')];
 	
+	var pirate = new PirateBartender(questions);
+	
+	var pantry = new PiratePantry();
 	// Ingredients and Flavors  // 
 	
 	
@@ -258,11 +261,6 @@
 	pantry.add(new PirateIngredients('Slice of orange', 15, 'fruity'));
 	pantry.add(new PirateIngredients('Splash of cassis', 5, 'fruity'));
 	pantry.add(new PirateIngredients('Cherry on top', 10, 'fruity'));
-	
-	// Object instances // 
-	
-	var pantry = new PiratePantry();
-	var pirate = new PirateBartender(questions);
 	
 	$(document).ready(function () {
 	
