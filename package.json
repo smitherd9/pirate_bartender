@@ -17,7 +17,7 @@
     "clean:css": "npm run clean:css:unminified && npm run clean:css:minified",
     "build:css:unminified": "npm run clean:css:unminified && lessc --source-map css/index.less css/index.css",
     "watch:css:unminified": "npm run build:css:unminified && chokidar 'css/**/*.(css|less)' -c 'npm run build:css:unminified'",
-    "clean:css:unminified": "rm -f build/index.css build/index.css.map",
+    "clean:css:unminified": "rm -f css/index.css css/index.css.map",
     "build:css:minified": "npm run clean:css:minified && lessc --clean-css --source-map css/index.less build/index.min.css",
     "watch:css:minified": "npm run build:css:minified && chokidar 'css/**/*.(css|less)' -c 'npm run build:css:minified'",
     "clean:css:minified": "rm -f build/index.min.css build/index.min.css.map",

@@ -1,3 +1,7 @@
+@import "./normalize.css";
+@import "./animate.min.css";
+@import "./index.css";
+
 * {
     box-sizing: border-box;
 }
@@ -63,7 +67,7 @@
     background-color: #378de5;
 }
 
-.enter-button:active, {
+.enter-button:active {
 
     position: relative;
     top: 1px;
