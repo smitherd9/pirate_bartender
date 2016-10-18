@@ -38,11 +38,10 @@ module.exports = {
         alias: {
             'jquery': require.resolve('jquery'),
             'animateCss': require.resolve('animate.css'),
-            'normalizeCss': require.resolve('normalize.css'),            
+            'normalizeCss': require.resolve('normalize.css'),
             // bind to modules;
             modules: path.join(__dirname, "node_modules"),
         }
     }
 
 }
-
